@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Marks Prediction</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+    .heading{
+        font-weight: 100;
+        font-size: 4em;
+        text-shadow: 1px 1px 5px black;
+    }
+    img{
+        height: 70%;
+        width: 100%;
+    }
+    .text{
+        font-size: 32px;
+        font-style: italic;
+    }
+    .custom-file-input ~ .custom-file-label::after {
+        content: "Button Text";
+    }
+    html {
+    position: relative;
+    min-height: 100%;
+    }
+    body {
+    margin-bottom: 60px; /* Margin bottom by footer height */
+    }
+    .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+    }
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">CaptionIt</a>
+    </nav>
+              
+    <div class="container">
+        <br>
+        <br>
+        <div class="row justify-content-center align-items-center">
+            <div class="jumbotron">
+                <div class="container">
+                        <h1 class="heading">Image Captioning</h1>
+                        <p>Upload your image to genereate caption</p>
+                    <form action="/" method="POST" enctype="multipart/form-data">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="userfile" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                                <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        {% if your_result %}
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 justify-content-center align-items-center">
+                    <div class="card " style="width: 18rem;height: 28rem;">
+                        <img src="{{your_result['image']}}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Caption:</h5>
+                            <p class="card-text">{{your_result['caption']}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        {% endif %}
+    </div>
+    <footer class="footer justify-content-center align-items-center">
+            <div class="container text-center">
+              <span class="text-muted">By: Prakash Mishra</span>
+            </div>
+    </footer>
+
+    <script type="text/javascript">
+
+        $('.custom-file input').change(function (e) {
+            if (e.target.files.length) {
+                $(this).next('.custom-file-label').html(e.target.files[0].name);
+            }
+        });
+    
+    </script>
+</body>
+</html>
