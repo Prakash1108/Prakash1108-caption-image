@@ -15,7 +15,7 @@ requests==2.23.0
 scikit-learn==0.22.1
 scipy==1.4.1
 sklearn==0.0
-tensorflow==1.0.0
+tensorflow==2.9.3
 Click==7.0
 itsdangerous==1.1.0
 Jinja2==2.10.1
